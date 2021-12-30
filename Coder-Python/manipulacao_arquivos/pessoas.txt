@@ -1,0 +1,4 @@
+Nome: wagner, Idade: 40
+Nome: Aline, Idade: 20
+Nome: Carlos, Idade: 70
+Nome: Tania, Idade: 60
