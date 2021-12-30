@@ -1,0 +1,1 @@
+ like todos q têm ca no nome em qualquer posição
