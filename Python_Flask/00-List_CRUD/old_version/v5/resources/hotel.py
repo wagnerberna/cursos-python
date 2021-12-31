@@ -1,5 +1,5 @@
 from flask_restful import Resource, reqparse
-
+from models.hotel import HotelModel
 from resources.lista_teste import lista_hoteis
 
 # reqparse permite receber JSON da requisição
@@ -18,7 +18,7 @@ class Hotel(Resource):
     argumentos = reqparse.RequestParser()
     argumentos.add_argument("nome")
     argumentos.add_argument("estrelas")
-    argumentos.add_argument("diaria")
+    argumentos.add_argument("diarias")
     argumentos.add_argument("cidade")
 
     def find_hotel(hotel_id):
@@ -37,9 +37,12 @@ class Hotel(Resource):
 
     def post(self, hotel_id):
         # referencia a classe Hotel
+        # usa a classe HotelModel para instanciar e criar um objeto hotel
+        # usa fn json para converter o objeto
         # kwargs desempacota os dados
         dados = Hotel.argumentos.parse_args()
-        novo_hotel = {"hotel_id": hotel_id, **dados}
+        instancia_hotel_objeto = HotelModel(hotel_id, **dados)
+        novo_hotel = instancia_hotel_objeto.json()
 
         lista_hoteis.append(novo_hotel)
         return novo_hotel, 200
@@ -47,7 +50,8 @@ class Hotel(Resource):
     # se hotel existir atualiza, senão cria novo
     def put(self, hotel_id):
         dados = Hotel.argumentos.parse_args()
-        novo_hotel = {"hotel_id": hotel_id, **dados}
+        instancia_hotel_objeto = HotelModel(hotel_id, **dados)
+        novo_hotel = instancia_hotel_objeto.json()
 
         # update atualiza os dados do hotel localizado
         hotel = Hotel.find_hotel(hotel_id)
