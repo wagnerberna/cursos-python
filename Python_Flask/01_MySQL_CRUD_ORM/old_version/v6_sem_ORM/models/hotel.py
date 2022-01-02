@@ -1,10 +1,10 @@
 # classe de hotel modelo
 class HotelModel:
-    def __init__(self, hotel_id, nome, estrelas, diarias, cidade):
+    def __init__(self, hotel_id, nome, estrelas, diaria, cidade):
         self.hotel_id = hotel_id
         self.nome = nome
         self.estrelas = estrelas
-        self.diarias = diarias
+        self.diaria = diaria
         self.cidade = cidade
 
     # converter para dict
@@ -13,6 +13,6 @@ class HotelModel:
             "hotel_id": self.hotel_id,
             "nome": self.nome,
             "estrelas": self.estrelas,
-            "diarias": self.diarias,
+            "diaria": self.diaria,
             "cidade": self.cidade,
         }

@@ -1,25 +1,28 @@
 from flask_restful import Resource, reqparse
 from models.hotel import HotelModel
-from resources.lista_teste import lista_hoteis
+from old_version.lista_teste import lista_hoteis
+from db import conn
 
 
 class Hoteis(Resource):
     def get(self):
-        return {"hoteis": lista_hoteis}
+        sql = "SELECT * FROM hoteis"
+        # args = 50
+        global conn
+        with conn() as conn:
+            cursor = conn.cursor()
+            cursor.execute(sql)
+            hoteis = cursor.fetchall()
+            # print(hoteis)
+            return {"hoteis": hoteis}
 
 
 class Hotel(Resource):
     argumentos = reqparse.RequestParser()
     argumentos.add_argument("nome")
     argumentos.add_argument("estrelas")
-    argumentos.add_argument("diarias")
+    argumentos.add_argument("diaria")
     argumentos.add_argument("cidade")
-
-    def find_hotel(hotel_id):
-        for hotel in lista_hoteis:
-            if hotel["hotel_id"] == hotel_id:
-                return hotel
-        return None
 
     def get(self, hotel_id):
         hotel = Hotel.find_hotel(hotel_id)
@@ -49,8 +52,8 @@ class Hotel(Resource):
         return novo_hotel, 201
 
     def delete(self, hotel_id):
-        global lista_hoteis
-        lista_hoteis = [
-            el for el in lista_hoteis if el["hotel_id"] != hotel_id
-        ]
-        return {"message": "hotel deleted"}
+        hotel = HotelModel.find_hotel(hotel_id)
+        if hotel:
+            hotel.delete_hotel()
+            return {"message": "hotel deleted"}
+        return {"message": "Hotel not found"}, 404
