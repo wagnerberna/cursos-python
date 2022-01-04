@@ -1,8 +1,9 @@
+from flask_jwt_extended.utils import get_raw_jwt
 from flask_restful import Resource, reqparse
 from models.usuario import UserModel
-
 from werkzeug.security import safe_str_cmp
 from flask_jwt_extended import create_access_token, jwt_required
+from blacklist import BLACKLIST
 
 
 # from werkzeug.security import safe_str_cmp:(método seguro de comparação de senha / Import nativo python)
@@ -47,6 +48,7 @@ class User(Resource):
             return user.json()
         return {"message": "User not found."}, 404
 
+    @jwt_required
     def delete(self, user_id):
         user = UserModel.find_user(user_id)
         if user:
@@ -83,3 +85,17 @@ class UserLogin(Resource):
             token_de_acesso = create_access_token(identity=user.user_id)
             return {"access_token": token_de_acesso}, 200
         return {"message": "The username or password is incorrect."}, 401
+
+
+class UserLogout(Resource):
+
+    # para logou é necessário q esteja logado
+    # pega o identificador do token
+    # "jti" (JWT Token identifier)
+    @jwt_required
+    def post(self):
+        jwt_id = get_raw_jwt()["jti"]
+        BLACKLIST.add(jwt_id)
+        # print("Ponto0 logout")
+        # print(BLACKLIST)
+        return {"message": "Logged out sucessfully!"}, 200
