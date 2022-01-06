@@ -1,6 +1,6 @@
 from sql_alchemy import banco
 
-# ao Não passar o ID p/ construtor o alchemy faz auto incremental automaticamente
+
 class UserModel(banco.Model):
     __tablename__ = "usuarios"
 

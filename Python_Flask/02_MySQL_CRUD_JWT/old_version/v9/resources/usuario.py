@@ -5,6 +5,11 @@ from werkzeug.security import safe_str_cmp
 from flask_jwt_extended import create_access_token, jwt_required
 from blacklist import BLACKLIST
 
+
+# from werkzeug.security import safe_str_cmp:(método seguro de comparação de senha / Import nativo python)
+
+
+# atributos passa a ser uma variável global:
 atributos = reqparse.RequestParser()
 atributos.add_argument(
     "login",
@@ -57,6 +62,7 @@ class User(Resource):
         return {"message": "user not found."}, 404
 
 
+# .parse_args() salva todos atributos recebidos na variável indicada
 class UserRegister(Resource):
     def post(self):
         dados = atributos.parse_args()
@@ -69,6 +75,7 @@ class UserRegister(Resource):
         return {"message": "user created successfully"}, 201
 
 
+# safe_str_cmp (método seguro de comparação de senha / Import nativo python)
 class UserLogin(Resource):
     @classmethod
     def post(cls):
@@ -81,6 +88,10 @@ class UserLogin(Resource):
 
 
 class UserLogout(Resource):
+
+    # para logou é necessário q esteja logado
+    # pega o identificador do token
+    # "jti" (JWT Token identifier)
     @jwt_required
     def post(self):
         jwt_id = get_raw_jwt()["jti"]
