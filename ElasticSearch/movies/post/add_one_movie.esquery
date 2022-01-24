@@ -1,0 +1,6 @@
+POST /movies/_doc/109487
+{
+    "genre":["IMAX","Sci-Fi"],
+    "title": "interstellar",
+    "year": 2014
+}

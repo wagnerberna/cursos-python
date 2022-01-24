@@ -1,0 +1,6 @@
+GET /shakespeare/_search   
+{
+    "query": {
+        "match_all": {}
+    }
+}

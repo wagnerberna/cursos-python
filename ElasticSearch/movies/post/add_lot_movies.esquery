@@ -1,0 +1,23 @@
+/* _bulk lote de documentos */
+POST /movies/_bulk
+
+{"create":{"_index":"movies", "_id":"2"}}
+{"id":"2", "title": "Batman Begins", "year":2005, "genre":["ficção", "herois", "animes"]}
+
+{"create":{"_index":"movies", "_id":"3"}}
+{"id":"3", "title": "Batman o Cavaleiro das Trevas", "year":2008, "genre":["ficção", "herois", "animes"]}
+
+{"create":{"_index":"movies", "_id":"4"}}
+{"id":"4", "title": "Batman o Cavaleiro das Trevas Ressurge", "year":2012, "genre":["ficção", "herois", "animes"]}
+
+{"create":{"_index":"movies", "_id":"5"}}
+{"id":"5", "title": "O Silêncio dos Inocentes", "year":1991, "genre":["terror", "suspense"]}
+
+{"create":{"_index":"movies", "_id":"6"}}
+{"id":"6", "title": "Hannibal", "year":2001, "genre":["terror", "suspense"]}
+
+{"create":{"_index":"movies", "_id":"7"}}
+{"id":"7", "title": "Dragão Vermelho", "year":2002, "genre":["terror", "suspense"]}
+
+{"create":{"_index":"movies", "_id":"8"}}
+{"id":"8", "title": "Hannibal a Origem do Mal", "year":2007, "genre":["terror", "suspense"]}

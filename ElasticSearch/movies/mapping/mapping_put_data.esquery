@@ -1,0 +1,9 @@
+/* alterar tipo da data */
+PUT /movies
+{
+    "mappings":{
+        "properties":{
+            "ano":{"type":"date"}
+        }
+    }
+}

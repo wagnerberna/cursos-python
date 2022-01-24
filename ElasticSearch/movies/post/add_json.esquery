@@ -1,0 +1,2 @@
+/* somente terminal */
+POST /movies/_bulk?--data-bianry@movies.json

@@ -1,0 +1,12 @@
+/* Busca usando json queries e filters */
+/* Filtros tornam mais rápido */
+GET /movies/_search
+{
+    "query":{
+        "bool": {
+            "must":{"term": {"title": "Bat"},
+            "filter": {"range":{"year":{"gte": 2000}}}
+        }
+
+    }
+}
