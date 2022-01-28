@@ -1,43 +1,43 @@
-<h1 align="center">Welcome to Desafio Técnico Neoway 👋</h1>
-<p>
-  <img alt="Version" src="https://img.shields.io/badge/version-1.0-blue.svg?cacheSeconds=2592000" />
-  <a href="https://github.com/wagnerberna/Desafio_Neoway/blob/main/documentacao_api_neoway.pdf" target="_blank">
-    <img alt="Documentation" src="https://img.shields.io/badge/documentation-yes-brightgreen.svg" />
-  </a>
-</p>
+# Desafio Técnico Neoway
 
-> Desafio técnico com o objetivo de criar uma API para fazer a raspagem de dados dos site dos candidatos aprovados no vestibular. Projeto desenvolvido em Python juntamente com as tecnologias Flask-RESTful e SQLAlchemy ORM, para as requisições e interações com o banco de dados SQL, bem como o Beautiful Soup para raspagem de dos dados, e envio dos mesmos para a API por requisições, desta forma permitindo a independência destes componentes. 
+Foobar is a Python library for dealing with word pluralization.
 
-### 🏠 [Homepage](https://github.com/wagnerberna/Desafio_Neoway)
+## Installation
 
-## Install
+Use the package manager [pip](https://pip.pypa.io/en/stable/) to install foobar.
 
-```sh
-python3 app.py
+```bash
+pip install foobar
 ```
 
 ## Usage
 
-```sh
-python -c &#34;import start; start.scraping(start_page, stop_page, sleep_time_page)&#34;
+```python
+import foobar
+
+# returns 'words'
+foobar.pluralize('word')
+
+# returns 'geese'
+foobar.pluralize('goose')
+
+# returns 'phenomenon'
+foobar.singularize('phenomena')
 ```
 
-## Run tests
+## 🛠 Tecnologias
+- [Python](https://www.python.org/)
+- [Flask-RESTful](https://flask-restful.readthedocs.io/en/latest/)
+- [SQLAlchemy](https://www.sqlalchemy.org/)
+- [Beautiful Soup](https://www.crummy.com/software/BeautifulSoup/)
+- [SQLite](https://www.sqlite.org/index.html)
 
-```sh
-pytest
-```
+As seguintes ferramentas foram usadas na construção do projeto:
 
-## Author
+## Contributing
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
-👤 **Wagner Berna**
+Please make sure to update tests as appropriate.
 
-* Github: [@wagnerberna](https://github.com/wagnerberna)
-* LinkedIn: [@https:\/\/www.linkedin.com\/in\/wagnerberna\/](https://linkedin.com/in/https:\/\/www.linkedin.com\/in\/wagnerberna\/)
-
-## Show your support
-
-Give a ⭐️ if this project helped you!
-
-***
-_This README was generated with ❤️ by [readme-md-generator](https://github.com/kefranabg/readme-md-generator)_
+## License
+[MIT](https://choosealicense.com/licenses/mit/)
