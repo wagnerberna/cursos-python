@@ -3,8 +3,8 @@ from flask import Response, request
 from flask_restx import Resource, Namespace
 from flask_jwt_extended import create_access_token, jwt_required
 
-# from flask_jwt_extended.utils import get_raw_jwt
-# from blacklist import BLACKLIST
+from flask_jwt_extended.utils import get_jwt
+from blacklist import BLACKLIST
 from src.model.auth import AuthModel
 from werkzeug.security import safe_str_cmp
 from src.service.message import *
@@ -36,3 +36,13 @@ class LoginController(Resource):
             return {'token': token}, 200
 
         return AUTH_FAILED, 404
+
+# Logout
+# jti (JWT Token Identifier - identificado do token (id))
+@auth_ns.route('logout')
+class UserLogout(Resource):
+    @jwt_required()
+    def post(self):
+        jwt_id = get_jwt()['jti']
+        BLACKLIST.add(jwt_id)
+        return LOGGED_SUCCESSFUL, 200

@@ -7,4 +7,5 @@ USER_CREATED = {'message': 'User created.'}
 NOTHING_UPDATE = {'message': 'Nothing to update'}
 UPDATE_SUCCESS = {'message': 'Successfully update'}
 AUTH_FAILED = {'message': 'Login or password incorrect.'}
-
+LOGGED_SUCCESSFUL = {'message': 'Logged out successfully.'}
+LOGGED_OUT = {"message": "You have been logged out."}

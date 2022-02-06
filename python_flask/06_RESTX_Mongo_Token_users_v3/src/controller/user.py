@@ -3,6 +3,7 @@ from flask_restx import Resource, Namespace
 from src.model.user import UserModel
 from src.service.message import *
 from bson.objectid import ObjectId
+from flask_jwt_extended import jwt_required
 
 # Namespace (conjunto de rotas)
 users_ns = Namespace('users_route', description='namespace CRUD for all users')
@@ -22,7 +23,6 @@ class UsersController(Resource):
             for user in data_users:
                 user['_id'] = str(user['_id'])
                 # del user['password']
-
             return data_users, 200
 
         except:
@@ -77,6 +77,7 @@ class UserController(Resource):
         except:
             return INTERNAL_ERROR, 500
 
+    @jwt_required()
     def put(self, id):
         try:
             data = request.get_json()
@@ -90,6 +91,7 @@ class UserController(Resource):
         except:
             return INTERNAL_ERROR, 500
 
+    @jwt_required()
     def delete(self, id):
         try:
             data_delete = UserModel().delete(id)
