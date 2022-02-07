@@ -1,5 +1,7 @@
 import pymongo
+from dotenv import dotenv_values
 
+config = dotenv_values(".env")
 
 class Mongo:
     def mongo_connect(self):

@@ -8,10 +8,14 @@ from blacklist import BLACKLIST
 import datetime
 
 app = Flask(__name__)
+
+# app.config.from_pyfile('config.py')
+app.config.from_object('config_v2.DevConfig')
+
 # config Token
-app.config["JWT_SECRET_KEY"] = "Udemy"
-app.config["JWT_BLACKLIST_ENABLED"] = True
-app.config.setdefault("JWT_ACCESS_TOKEN_EXPIRES", datetime.timedelta(days=2))
+# app.config["JWT_SECRET_KEY"] = "Udemy"
+# app.config["JWT_BLACKLIST_ENABLED"] = True
+# app.config.setdefault("JWT_ACCESS_TOKEN_EXPIRES", datetime.timedelta(days=2))
 # app.config["JWT_ACCESS_TOKEN_EXPIRES", datetime.timedelta(minutes=15)]
 
 api = Api(app)
@@ -32,4 +36,4 @@ api.add_namespace(auth_ns, path='/')
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run()
