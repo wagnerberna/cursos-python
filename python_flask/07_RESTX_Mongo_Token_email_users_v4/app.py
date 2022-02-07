@@ -7,8 +7,6 @@ from src.service.message import *
 from blacklist import BLACKLIST
 import datetime
 
-# from src.service.token import verifify_blacklist, token_access_revoked
-
 app = Flask(__name__)
 # config Token
 app.config["JWT_SECRET_KEY"] = "Udemy"
@@ -32,12 +30,6 @@ def verifify_blacklist(self, token):
 api.add_namespace(users_ns, path='/')
 api.add_namespace(auth_ns, path='/')
 
-# Alterar mensagem padrão do token revogado
-# @jwt.revoked_token_loader
-# def token_access_revoked(self, token):
-#     print("Teste PONTO2 TOKEN INVALIDADO")
-#     print(BLACKLIST)
-#     return LOGGED_OUT, 401
 
 if __name__ == '__main__':
     app.run(debug=True)
