@@ -6,10 +6,10 @@ class Config:
     # config Token
     DEBUG = True
     TESTING = True
-    JWT_SECRET_KEY = "Udemy"
+    JWT_SECRET_KEY = "Udemy!"
     JWT_BLACKLIST_ENABLED = True
-    JWT_ACCESS_TOKEN_EXPIRES = datetime.timedelta(days=2)
-    # JWT_ACCESS_TOKEN_EXPIRES = datetime.timedelta(minutes=15)
+    # JWT_ACCESS_TOKEN_EXPIRES = datetime.timedelta(days=2)
+    JWT_ACCESS_TOKEN_EXPIRES = datetime.timedelta(minutes=1)
 
 # classes de produção e teste
 class ProdConfig(Config):

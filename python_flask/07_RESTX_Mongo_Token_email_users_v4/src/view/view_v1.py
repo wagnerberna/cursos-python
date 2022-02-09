@@ -1,6 +1,7 @@
 from string import Template
 from datetime import datetime
 
+
 def welcome(login_user, name_user):
     with open ('src/template/template_welcome.html', 'r') as file:
         template = Template(file.read())
@@ -10,4 +11,4 @@ def welcome(login_user, name_user):
         return body_message
 
 
-# print(welcome('Superman', 'Clark'))
+welcome('Superman', 'Clark')
