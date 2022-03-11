@@ -1,4 +1,4 @@
 POST /movies/_doc/1/_update
 {
-    "doc": {"title":"Interstellar"}
+    "doc": {"title":"Interstellar 2"}
 }

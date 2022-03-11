@@ -1,6 +1,0 @@
-PUT /movies/_doc/1
-{
-    "genre":["Ficção","Viagem no Tempo"],
-    "title": "Interstellar",
-    "year": 2014
-}

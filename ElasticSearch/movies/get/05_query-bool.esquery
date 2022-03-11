@@ -1,0 +1,6 @@
+GET /movies/_search
+{
+    "query":{
+        "bool": {"title": "Interstellar 2"}
+    }
+}

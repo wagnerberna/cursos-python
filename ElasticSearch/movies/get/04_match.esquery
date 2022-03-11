@@ -1,5 +1,5 @@
-/* match título igual */
+/* Testar */
 GET /movies/_search
 {
-    "filter":{"year":{"gte":2010}} 
+    "filter":{"year":2010}
 }

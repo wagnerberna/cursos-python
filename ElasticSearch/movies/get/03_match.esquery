@@ -1,6 +1,6 @@
 GET /movies/_search
 {
     "query":{
-        "match":{"title": "Batman"}
+        "match":{"title": "Begins"}
         }
 }
