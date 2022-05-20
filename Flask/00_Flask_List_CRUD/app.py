@@ -1,3 +1,5 @@
+# import sys
+# print(sys.path)
 from flask import Flask
 from flask_restful import Api
 from resources.hotel import Hoteis, Hotel
