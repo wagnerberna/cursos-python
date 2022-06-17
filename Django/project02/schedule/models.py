@@ -1,4 +1,3 @@
-# from tkinter import CASCADE
 from django.db import models
 from patients.models import Patients
 
@@ -19,7 +18,8 @@ class Schedule(models.Model):
         null=False,
     )
 
-    #  unique_toguether não permite agendamento no mesmo horário com o mesmo paciente (tupla com os campos)
+    #  unique_toguether não permite agendamento no mesmo horário com o mesmo paciente
+    # (tupla com os campos)
     class Meta:
         managed = True
         db_table = "schedule"

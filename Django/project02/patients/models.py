@@ -1,6 +1,5 @@
 from django.db import models
 
-# Create your models here.
 
 # chave primária com auto incremente
 # name campo não pode ser nulo ou falso
