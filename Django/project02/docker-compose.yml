@@ -1,0 +1,57 @@
+version: "3.9"
+
+services:
+  # db:
+  #   container_name: postgres_test
+  #   image: postgres:latest
+  #   # sempre garante que o banco de dados seja iniciado quando o sistema for iniciado. 
+  #   restart: always
+  #   environment:
+  #     # atribuir o nome de usuário e a senha do banco de dados Postgres principal
+  #     POSTGRES_USER: user
+  #     POSTGRES_PASSWORD: mypassword
+  #     POSTGRES_DB: school_test
+  #   expose: 
+  #     - "5432"
+  #   ports:
+  #     - "5430:5432"
+  #   # mapeia pasta local vs pasta no docker para salvar os dados do banco e do script
+  #   volumes: 
+  #     - ../../data:/var/lib/postgresql/data
+  #     - ./scripts/create_table.sql:/docker-entrypoint-initdb.d/create_table.sql
+  #   # networks:
+  #   #   - backend
+
+  api:
+    container_name: python_api_django
+    image: python_api_django
+    build: .
+    # command: python app.py
+    command: python manage.py runserver 0.0.0.0:8000
+    ports:
+      - "8000:8000"
+    # environment:
+    #   - DATABASE_DOCKER="postgresql://user:mypassword@postgres_test:5432/school_test"
+    #   - DATABASE_URL="postgresql://user:mypassword@localhost:5430/school_test"
+    #   - POSTGRES_LOCAL="postgresql://postgres:123@localhost:5432/postgres"
+    #   - DATABASE_LOCAL="postgresql://postgres:123@localhost:5432/school_test"
+    #   - DATABASE_URL="postgres://ndxyrolnkefpxf:cc9f341cfcf4f8b076ee282ecb88872fe9578fa8c53ed495ff15ea6663178a8d@ec2-52-45-83-163.compute-1.amazonaws.com:5432/dbvld7vgp4pomg"
+    #   - APP_PORT=5001
+    #   - FLASK_RUN_HOST=0.0.0.0
+    #   - APP_DEV="config.DevConfig"
+    #   - APP_PROD="config.ProdConfig"
+    #   - EMAIL_SERVER="wag.backend@gmail.com"
+    #   - EMAIL_PASSWORD="psvkwbhoeckqjkjs"
+    #   - JWT_SECRET_KEY="Udemy!"
+    #   - SMTP_SERVER="smtp.gmail.com"
+    #   - SMTP_PORT=587
+    # depends_on:
+    #   - db
+    # networks:
+    #   - backend
+    
+networks:
+  default:
+    driver: bridge
+
+    

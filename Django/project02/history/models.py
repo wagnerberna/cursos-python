@@ -2,6 +2,7 @@ from django.db import models
 from schedule.models import Schedule
 
 # releated name nome relacionado com a listagem de históricos
+#
 class History(models.Model):
     id_history = models.AutoField(primary_key=True)
     date = models.DateTimeField(auto_now_add=True)
