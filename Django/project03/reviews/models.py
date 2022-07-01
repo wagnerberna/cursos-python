@@ -10,6 +10,7 @@ class Reviews(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     review = models.TextField(blank=False, null=False)
     ranking = models.DecimalField(max_digits=2, decimal_places=1)
+    approved = models.BooleanField(default=True, blank=True, null=True)
     created_at = models.DateTimeField(auto_now=True)
 
     class Meta:

@@ -21,3 +21,8 @@ class TouristSpot(models.Model):
     # campo de identificação dentro do django admin
     def __str__(self):
         return self.name
+
+    # semelhante ao Serializer Method Field outra forma de fazer
+    @property
+    def description_complete_2(self):
+        return "%s - %s no bairro: %s" % (self.name, self.description, self.address)
