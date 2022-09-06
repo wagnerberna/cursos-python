@@ -18,6 +18,9 @@ from django.contrib import admin
 from django.urls import path, include
 from . import views
 
+# Import views incluir a home, pode ser feita como se fosse um app igual blog
+# OU importada direto
+
 # include("") referencia url das páginas filhas
 # criar o arquivo urls dentro do app blog q é referenciado
 # chama o caminho dentro do blog/urls
@@ -25,7 +28,7 @@ from . import views
 
 urlpatterns = [
     path("", views.index),
-    path("admin/", admin.site.urls),
-    path("blog/", include("blog.urls")),
-    path("produto/", include("produto.urls")),
+    # path("admin/", admin.site.urls),
+    # path("blog/", include("blog.urls")),
+    # path("produto/", include("produto.urls")),
 ]
