@@ -4,11 +4,12 @@ from django.shortcuts import render
 # Create your views here.
 
 
-# Create your views here.
-
-
 def home(request):
-    return HttpResponse("Home HelpDesk")
+    return render(
+        request,
+        "helpdesk/pages/home.html",
+        context={"title": "HelpDesk"},
+    )
 
 
 def about(request):

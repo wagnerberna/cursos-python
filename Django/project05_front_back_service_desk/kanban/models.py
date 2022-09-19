@@ -50,7 +50,6 @@ class Category(models.Model):
 # usa tabela de usuários do Django
 class Team(models.Model):
     id = models.AutoField(primary_key=True)
-    name = models.CharField(max_length=50, null=False)
     user_name = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
     updated_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateField(auto_now=True)
@@ -59,7 +58,7 @@ class Team(models.Model):
         managed = True
 
     def __str__(self):
-        return "%s / Time: %s" % (self.user_name, self.name)
+        return "%s / Time: %s" % (self.user_name, self.user_name)
 
 
 # task_owner (pode ficar em branco(no formulário para salvar), e o valor padrão é None)
@@ -74,7 +73,7 @@ class Task(models.Model):
         Team, on_delete=models.SET_NULL, null=True, blank=True, default=None
     )
     status = models.ForeignKey(Status, on_delete=models.SET_NULL, null=True)
-    description = models.CharField(max_length=250, null=False)
+    description = models.TextField(null=True)
     updated_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateField(auto_now=True)
 

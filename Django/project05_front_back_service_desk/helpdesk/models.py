@@ -14,7 +14,7 @@ class Support(models.Model):
         managed = True
 
     def __str__(self):
-        return self.user_name
+        return "%s" % (self.user_name)
 
 
 class Category(models.Model):
@@ -32,7 +32,7 @@ class Category(models.Model):
 
 class Status(models.Model):
     id = models.AutoField(primary_key=True)
-    name = models.CharField(max_length=20, null=False)
+    name = models.CharField(max_length=30, null=False)
     updated_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateField(auto_now=True)
 
@@ -46,10 +46,13 @@ class Status(models.Model):
 class Demand(models.Model):
     id = models.AutoField(primary_key=True)
     user_name = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
-    attendant = models.ForeignKey(Support, on_delete=models.SET_NULL, null=True)
+    category = models.ForeignKey(Category, on_delete=models.SET_NULL, null=True)
+    description = models.TextField(null=True)
+    attendant = models.ForeignKey(
+        Support, on_delete=models.SET_NULL, null=True, blank=True
+    )
     status = models.ForeignKey(Status, on_delete=models.SET_NULL, null=True)
-    description = models.CharField(max_length=250)
-    solution = models.TextField(null=True)
+    solution = models.TextField(null=True, blank=True)
     updated_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateField(auto_now=True)
 
