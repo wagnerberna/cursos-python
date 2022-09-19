@@ -4,9 +4,15 @@ from django.db import models
 
 class Status(models.Model):
     id = models.AutoField(primary_key=True)
-    Status = models.CharField(max_length=20, null=False)
+    name = models.CharField(max_length=20, null=False)
     updated_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateField(auto_now=True)
+
+    class Meta:
+        managed = True
+
+    def __str__(self):
+        return self.name
 
 
 # auto_now_add (atualiza apenas quando é inserido)
@@ -20,6 +26,12 @@ class Project(models.Model):
     updated_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateField(auto_now=True)
 
+    class Meta:
+        managed = True
+
+    def __str__(self):
+        return "Projeto: %s / Status: %s" % (self.name, self.status)
+
 
 class Category(models.Model):
     id = models.AutoField(primary_key=True)
@@ -27,6 +39,12 @@ class Category(models.Model):
     description = models.CharField(max_length=150)
     updated_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateField(auto_now=True)
+
+    class Meta:
+        managed = True
+
+    def __str__(self):
+        return self.name
 
 
 # usa tabela de usuários do Django
@@ -36,6 +54,12 @@ class Team(models.Model):
     user_name = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
     updated_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateField(auto_now=True)
+
+    class Meta:
+        managed = True
+
+    def __str__(self):
+        return "%s / Time: %s" % (self.user_name, self.name)
 
 
 # task_owner (pode ficar em branco(no formulário para salvar), e o valor padrão é None)
@@ -53,3 +77,14 @@ class Task(models.Model):
     description = models.CharField(max_length=250, null=False)
     updated_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateField(auto_now=True)
+
+    class Meta:
+        managed = True
+
+    def __str__(self):
+        return "Tarefa: %s / Projeto: %s, Responsável: %s, Status: %s" % (
+            self.name,
+            self.project,
+            self.task_owner,
+            self.status,
+        )

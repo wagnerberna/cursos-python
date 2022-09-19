@@ -24,4 +24,6 @@ urlpatterns = [
     path("about/", about),
     path("helpdesk/", include("helpdesk.urls")),
     path("kanban/", include("kanban.urls")),
+    path("kanban/api/", include("kanban.api.urls")),
+    path("helpdesk/api/", include("helpdesk.api.urls")),
 ]

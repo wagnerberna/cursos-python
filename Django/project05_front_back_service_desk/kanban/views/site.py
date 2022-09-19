@@ -6,7 +6,9 @@ from django.shortcuts import render
 
 def home(request):
     return render(
-        request, "ti/home.html", context={"title": "Sistemas TI: Kanban e Helpdesk"}
+        request,
+        "kanban/pages/home.html",
+        context={"title": "Kanban"},
     )
 
 
