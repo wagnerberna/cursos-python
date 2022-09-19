@@ -1,0 +1,42 @@
+
+# Create your models here.
+
+# model project
+# id
+# name
+# status (Table)
+# description
+# updated_at
+# created_at
+
+# model category
+# id
+# name
+# description
+# updated_at
+# created_at
+
+# model task
+# id
+# title
+# project (Table)
+# category (Table)
+# task_owner(Table)
+# description
+# status (Table)
+# updated_at
+# created_at
+
+# model status
+# id
+# status
+# updated_at
+# created_at
+
+# team
+# id
+# name
+# user_name
+# password
+# updated_at
+# created_at
