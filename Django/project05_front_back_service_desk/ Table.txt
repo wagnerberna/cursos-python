@@ -1,7 +1,6 @@
+###Kanban
 
-# Create your models here.
-
-# model project
+## model project
 # id
 # name
 # status (Table)
@@ -9,14 +8,14 @@
 # updated_at
 # created_at
 
-# model category
+## model category
 # id
 # name
 # description
 # updated_at
 # created_at
 
-# model task
+## model task
 # id
 # title
 # project (Table)
@@ -27,16 +26,41 @@
 # updated_at
 # created_at
 
-# model status
+## model status
 # id
-# status
+# name
 # updated_at
 # created_at
 
-# team
+## team
 # id
 # name
 # user_name
-# password
+# updated_at
+# created_at
+
+------------------------
+
+### helpdesk
+
+## model category
+# id
+# name
+# description
+# updated_at
+# created_at
+
+## model support
+# id
+# user_name
+# updated_at
+# created_at
+
+## model demand
+# id
+# user_name
+# description (Table)
+# attendant (Table)
+# solution
 # updated_at
 # created_at
