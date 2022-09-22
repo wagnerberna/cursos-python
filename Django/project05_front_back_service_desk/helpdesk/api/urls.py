@@ -1,10 +1,11 @@
 from django.urls import include, path
-from helpdesk.api.viesets import demandViewSet
+from helpdesk.api.viewsets import DemandViewSet
 from rest_framework import routers
 
+# name apelido da URL para referenciar na action do form
 route = routers.DefaultRouter()
-route.register(r"demand", demandViewSet)
+route.register(r"demand", DemandViewSet, basename="helpdesk_demand")
 
 urlpatterns = [
-    path("demand/", include(route.urls)),
+    path("", include(route.urls)),
 ]

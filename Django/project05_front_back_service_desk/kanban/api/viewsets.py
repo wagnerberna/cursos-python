@@ -5,4 +5,4 @@ from rest_framework import viewsets
 
 class ProjectViewSet(viewsets.ModelViewSet):
     serializer_class = ProjectSerializer
-    queryset = Project.objects.all()
+    queryset = Project.objects.all().order_by("-id")

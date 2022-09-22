@@ -1,0 +1,10 @@
+        <div class="container">
+        <ul>Lista de Demandas: 
+
+            {%for demand in all_demands%}
+            <li>ID:{{demand.id}} Nome: {{demand.user_name}}</li>
+            
+            {%endfor%}
+        </ul>
+    
+        </div>

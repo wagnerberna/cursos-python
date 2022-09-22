@@ -1,13 +1,13 @@
-{% include "kanban/partials/head.html" %}
+{% include "helpdesk/partials/head.html" %}
 
 <body>
-    {% include "kanban/partials/header.html"%}
-
-    {% include "kanban/partials/search.html"%}
+    {% include "helpdesk/partials/header.html"%}
 
 
     <main class="main-container">
             <h1>PG HelpDesk</h1>
+            {%include "helpdesk/partials/form_demand_create_form.html"%}
+            {%include "helpdesk/partials/form_demand_get.html"%}
 
         <div class="container">
     
