@@ -6,10 +6,12 @@
 
     <main class="main-container">
         <h1>PG HelpDesk principal</h1>
-        <h2>Chamado Abertos:</h2>
+        <h2>Chamado Abertos:</h2>    
+        {%include "helpdesk/partials/demand_list.html"%}
 
-    
-    {%include "helpdesk/partials/demand_list.html"%}
+        <a href="{%url "new_demand"%}">Abrir Chamado</a>
+
+        
 
     </main>
 
