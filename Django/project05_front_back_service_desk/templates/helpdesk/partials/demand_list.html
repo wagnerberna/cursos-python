@@ -1,12 +1,16 @@
-        <div class="container">
-        <ul>Lista de Demandas: 
+<div class="container">
+    <ul>Lista de Demandas: 
 
-            {%for demand in all_demands%}
+        {%for demand in all_demands%}
 
-            {% comment %} <li><a href="{%url 'demand_update'%} demand.id"> ID:{{demand.id}} Nome: {{demand.user_name}}</a></li> {% endcomment %}
-            <li> ID:{{demand.id}} Nome: {{demand.user_name}}</li>
-            
-            {%endfor%}
-        </ul>
+        <li>
+            <a href="{%url "demand_update" demand.id%}"> ID:{{demand.id}} Nome: {{demand.user_name}} Título: {{demand.title}}</a>
+            <a href="{%url "demand_delete" demand.id%}">Deletar</a>
+
+        </li>
+        
+        
+        {%endfor%}
+    </ul>
     
-        </div>
+</div>

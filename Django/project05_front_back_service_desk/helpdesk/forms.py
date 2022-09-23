@@ -7,7 +7,7 @@ from .models import Demand
 class DemandFormCreate(ModelForm):
     class Meta:
         model = Demand
-        fields = ["user_name", "category", "description", "image"]
+        fields = ["user_name", "category", "title", "description", "image"]
 
 
 class DemandFormUpdate(ModelForm):
@@ -16,6 +16,7 @@ class DemandFormUpdate(ModelForm):
         fields = [
             "user_name",
             "category",
+            "title",
             "description",
             "image",
             "attendant",

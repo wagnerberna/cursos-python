@@ -68,7 +68,7 @@ class Team(models.Model):
 # task_owner (pode ficar em branco(no formulário para salvar), e o valor padrão é None)
 class Task(models.Model):
     id = models.AutoField(primary_key=True)
-    name = models.CharField(max_length=70, null=False)
+    title = models.CharField(max_length=70, null=False)
     project = models.ForeignKey(Project, on_delete=models.SET_NULL, null=True)
     category = models.ForeignKey(
         Category, on_delete=models.SET_NULL, null=True, blank=True, default=None

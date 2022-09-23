@@ -54,5 +54,15 @@ def demand_update(request, id):
     return render(request, "helpdesk/pages/demand_update.html", {"form": form})
 
 
+def demand_delete(request, id):
+    demand = demand_view_set.get_by_id(id)
+
+    if request.method == "POST":
+        demand.delete()
+        return redirect("demands_list")
+
+    return render(request, "helpdesk/pages/demand_delete.html", {"demand": demand})
+
+
 def about(request):
     return HttpResponse("Sistema TI de Helpdesk")
