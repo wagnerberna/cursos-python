@@ -2,7 +2,9 @@
         <ul>Lista de Demandas: 
 
             {%for demand in all_demands%}
-            <li>ID:{{demand.id}} Nome: {{demand.user_name}}</li>
+
+            {% comment %} <li><a href="{%url 'demand_update'%} demand.id"> ID:{{demand.id}} Nome: {{demand.user_name}}</a></li> {% endcomment %}
+            <li> ID:{{demand.id}} Nome: {{demand.user_name}}</li>
             
             {%endfor%}
         </ul>

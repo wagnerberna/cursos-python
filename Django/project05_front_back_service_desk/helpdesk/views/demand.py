@@ -1,14 +1,17 @@
+import imp
+
 from django.http import HttpResponse
-from django.shortcuts import redirect, render
+from django.shortcuts import get_object_or_404, redirect, render
 from helpdesk.api.viewsets import DemandViewSet
 from helpdesk.forms import DemandFormCreate, DemandFormUpdate
+from helpdesk.models import Demand
 
 demand_view_set = DemandViewSet()
 
 # Create your views here.
 def demand(request):
     try:
-        all_demands = demand_view_set.get_all()
+        all_demands = demand_view_set.get_all(request)
         # print(all_demands)
 
         context = {"title": "Demandas", "all_demands": all_demands}
@@ -28,18 +31,27 @@ def demand(request):
 # redireciona para a rota da lista pelo apelido
 # Request .post pega o formulário, files as medias
 def new_demand(request):
-    form = DemandFormCreate(request.POST, request.FILES, None)
+    form = DemandFormCreate(request.POST or None, request.FILES or None)
     if form.is_valid():
         form.save()
         return redirect("demands_list")
 
-    return render(request, "helpdesk/pages/demand_create.html", {"create_form": form})
+    return render(request, "helpdesk/pages/demand_create.html", {"form": form})
 
 
-# get_object_or_404 tenta recuperar objeto ou retorna 404
+# passa uma instância
 def demand_update(request, id):
+    print("ID:::", id)
     demand = demand_view_set.get_by_id(id)
-    form = DemandFormUpdate(request.POST)
+    # demand = get_object_or_404(Demand, pk=id)
+    print(demand)
+    form = DemandFormUpdate(request.POST or None, instance=demand)
+
+    if form.is_valid():
+        form.save()
+        return redirect("demands_list")
+
+    return render(request, "helpdesk/pages/demand_update.html", {"form": form})
 
 
 def about(request):

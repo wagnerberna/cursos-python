@@ -11,12 +11,15 @@ class DemandViewSet(viewsets.ModelViewSet):
     queryset = Demand.objects.all().order_by("-id")
     serializer_class = DemandSerializer
 
-    def get_all(self):
+    def get_all(self, request):
         queryset = Demand.objects.all().order_by("-id")
         return queryset
 
+    # get_object_or_404 tenta recuperar objeto ou retorna 404
+
     def get_by_id(self, id):
         queryset = get_object_or_404(Demand, pk=id)
+        print("!!!queryset::: ", queryset)
         return queryset
 
     # def get_by_id(self, id):

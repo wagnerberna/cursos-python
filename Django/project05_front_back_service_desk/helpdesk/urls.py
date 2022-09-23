@@ -1,4 +1,4 @@
-from django.urls import path
+from django.urls import include, path
 
 from helpdesk.views.demand import demand, demand_update, new_demand
 from helpdesk.views.home import about, home
