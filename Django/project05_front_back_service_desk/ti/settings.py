@@ -134,6 +134,10 @@ STATICFILES_DIRS = [
 MEDIA_URL = "/image/"
 MEDIA_ROOT = "image"
 
+# rota de login e redirecionamento após o login
+LOGIN_URL = "/login/"
+LOGIN_REDIRECT_URL = "demands_list"
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 

@@ -1,5 +1,4 @@
-import imp
-
+from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 from django.shortcuts import get_object_or_404, redirect, render
 from helpdesk.api.viewsets import DemandViewSet
@@ -9,6 +8,7 @@ from helpdesk.models import Demand
 demand_view_set = DemandViewSet()
 
 # Create your views here.
+@login_required
 def demand(request):
     try:
         all_demands = demand_view_set.get_all(request)
@@ -30,6 +30,7 @@ def demand(request):
 # valida formulário para salvar
 # redireciona para a rota da lista pelo apelido
 # Request .post pega o formulário, files as medias
+@login_required
 def new_demand(request):
     form = DemandFormCreate(request.POST or None, request.FILES or None)
     if form.is_valid():
@@ -40,6 +41,7 @@ def new_demand(request):
 
 
 # passa uma instância
+@login_required
 def demand_update(request, id):
     print("ID:::", id)
     demand = demand_view_set.get_by_id(id)
@@ -54,6 +56,7 @@ def demand_update(request, id):
     return render(request, "helpdesk/pages/demand_update.html", {"form": form})
 
 
+@login_required
 def demand_delete(request, id):
     demand = demand_view_set.get_by_id(id)
 
